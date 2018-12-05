@@ -14,7 +14,7 @@ public class Exercice2 {
             System.out.println(line);
         }
     }
-@
+
     public void extractMailAndPointFromFile(String nomFichier) throws IOException{
         BufferedReader reader = new BufferedReader(new FileReader(nomFichier));
         String line = reader.readLine();
