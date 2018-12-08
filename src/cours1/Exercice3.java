@@ -1,7 +1,7 @@
 package cours1;
 
 public class Exercice3 {
-    private static boolean exceptionOne(String[] stringArray) {
+    private boolean exceptionOne(String[] stringArray) {
         for (String elem : stringArray) {
             try {
                 Integer.parseInt(elem);
@@ -12,7 +12,7 @@ public class Exercice3 {
         return true;
     }
 
-    private static boolean exceptionTwo(String[] stringArray) {
+    private boolean exceptionTwo(String[] stringArray) {
         for (String elem : stringArray) {
             try {
                 Integer.parseInt(elem);
@@ -25,21 +25,21 @@ public class Exercice3 {
         return true;
     }
 
-    private static boolean exceptionThree(String[] stringArray){
-        try{
-
-        }catch (){
-            
-        }
+    private void exceptionThree(){
+        throw new RuntimeException("Test runtime exception");
     }
 
     public static void main(String[] args) {
+        Exercice3 exercice3 = new Exercice3();
+
         String[] arr = {"156465", "16546534", "Bonjour"};
 
         // Part 1
-        //exceptionOne(arr);
+        //exercice3.exceptionOne(arr);
         // Part 2
-        exceptionTwo(arr);
+        //exercice3.exceptionTwo(arr);
+        // Part 3
+        //exercice3.exceptionThree();
 
 
     }
