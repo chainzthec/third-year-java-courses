@@ -2,7 +2,7 @@ package cours1;
 
 import java.util.Arrays;
 
-public class Main {
+public class Cours {
     private void permute() {
         Integer[] a = {10, 20, 30};
         Integer[] b = {40, 50, 60};
@@ -45,11 +45,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Main main = new Main();
-        main.entrainement();
+        Cours cours = new Cours();
+        cours.entrainement();
         //main.permute();
         //main.stringBuilderInitializor();
         String[] array = {"Test1", "Test2", "Test3", "Test4"};
-        main.staticAddToArray(array, "Test5");
+        cours.staticAddToArray(array, "Test5");
     }
 }
