@@ -94,15 +94,6 @@ public class Exercice4 {
         }
     }
 
-    private void partSix() {
-
-    }
-
-    private void partSeven() {
-
-    }
-
-
     public static void main(String[] args) {
         Exercice4 exercice4 = new Exercice4();
         //part 1
@@ -121,12 +112,6 @@ public class Exercice4 {
         //part 5
         System.out.println("--- PARTIE 5 ---");
         exercice4.partFive(args);
-        //part 6
-        System.out.println("--- PARTIE 6 ---");
-        exercice4.partSix();
-        //part 7
-        System.out.println("--- PARTIE 7 ---");
-        exercice4.partSeven();
 
     }
 }
