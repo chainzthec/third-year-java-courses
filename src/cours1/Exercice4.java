@@ -67,8 +67,31 @@ public class Exercice4 {
             System.out.println("Il n'y a aucun anagramme dans les arguments donnés");
     }
 
-    private void partFive() {
-
+    private void partFive(String[] args) {
+        String[] result = args;
+        if(args.length == 4){
+            if(args[args.length - 2].equals("/o")) {
+                //Traitement
+                for (int i = 0; i < args.length; i++) {
+                    if (i != args.length - 1 && i != args.length - 2) {
+                        boolean contains;
+                        contains = args[i].toLowerCase().contains(args[args.length - 1].toLowerCase());
+                        if(contains)
+                            result[i] = args[i].replace(args[args.length - 1],"");
+                    }
+                }
+                //Affichage
+                for(String elem : result){
+                    System.out.print(elem + " ");
+                }
+                System.out.println();
+            }
+            else{
+                System.out.println("Aucun élément n'a été supprimé car l'argument \"/o\" n'a pas été trouvé ");
+            }
+        }else{
+            throw new ArrayIndexOutOfBoundsException("Le nombre d'argument en exécution en ligne de commandes doit être égal à 5 !");
+        }
     }
 
     private void partSix() {
