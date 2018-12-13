@@ -14,9 +14,9 @@ public class FourthExercise {
             if (!(args[0].matches("\\w+") && args[1].matches("\\w+")))
                 throw new StringIndexOutOfBoundsException("String doesn't contain valid characters.");
             else
-                System.out.println("String is valid");
+                System.out.println("String is valid.");
         } else
-            System.out.println("No string given");
+            System.out.println("No string given in arguments.");
     }
 
     private String partTwo(int pos, String str) {
@@ -126,13 +126,13 @@ public class FourthExercise {
 
         if (args[args.length - 2].equals("/f")) {
             String stringToCompare = args[args.length - 1];
-            partSixReturnNumberOfOccurences(args, stringToCompare);
+            partSixReturnNumberOfOccurrences(args, stringToCompare);
         } else {
             System.out.println("No element was deleted because argument \"/f\" was not found.");
         }
     }
 
-    private void partSixReturnNumberOfOccurences(String[] args, String strToCompare) {
+    private void partSixReturnNumberOfOccurrences(String[] args, String strToCompare) {
         int x = 0;
         for (int i = 0; i < args.length - 3; i++) {
             if (StringFormatting.substringInStr(args[i], strToCompare))
@@ -142,9 +142,15 @@ public class FourthExercise {
     }
 
     private void partSeven(String[] args, FourthExercise fourthExercise) {
-        if (args.length != 4)
-            throw new IllegalArgumentException("Number of arguments should be equal to 5 !");
-        if (args[args.length - 2].equals("")) ;
+        ExceptionHandler.verifyNumberOfArguments(args, 4);
+
+        if (args[args.length - 2].equals("/an")) {
+            char[] word = args[args.length - 1].toLowerCase().toCharArray();
+            for (char letter : word) {
+                
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -155,22 +161,28 @@ public class FourthExercise {
         fourthExercise.partOne(args);
         //part 2
         System.out.println("--- PART 2 ---");
-        System.out.println(fourthExercise.partTwo(3, "abcdef"));
+        String testPartTwo1 = "abcdef";
+        String testPartTwo2 = "sananes";
+        System.out.println(fourthExercise.partTwo(3, testPartTwo1));
+        System.out.println(fourthExercise.partTwo(3, testPartTwo2));
         //part 3
         System.out.println("--- PART 3 ---");
-        System.out.println(fourthExercise.partThree(3, "defabc"));
+        String testPartThree1 = "defabc";
+        String testPartThree2 = "sananes";
+        System.out.println(fourthExercise.partThree(3, testPartThree1));
+        System.out.println(fourthExercise.partThree(3, testPartThree2));
         //part 4
         System.out.println("--- PART 4 ---");
-        fourthExercise.partFour(args, fourthExercise); // exemple : java firstCourse.FourthExercise. bbac aacp /a acpa returns :  aacp is an anagram of acpa
+        //fourthExercise.partFour(args, fourthExercise); // exemple : java firstCourse.FourthExercise. bbac aacp /a acpa returns :  aacp is an anagram of acpa
         //part 5
         System.out.println("--- PART 5 ---");
-        fourthExercise.partFive(args, fourthExercise);
+        //fourthExercise.partFive(args, fourthExercise);
         //part 6
         System.out.println("--- PART 6 ---");
-        fourthExercise.partSix(args, fourthExercise);
+        //fourthExercise.partSix(args, fourthExercise);
         //part 7
         System.out.println("--- PART 7 ---");
-        fourthExercise.partSeven(args, fourthExercise);
+        //fourthExercise.partSeven(args,fourthExercise);
         ExecutionTime.end();
     }
 }

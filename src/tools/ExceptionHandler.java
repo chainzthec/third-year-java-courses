@@ -5,7 +5,7 @@ public class ExceptionHandler {
         if (args.length != i)
             throw new IllegalArgumentException("Number of arguments must be superior or equal to "+ i + 1 +" !");
     }
-    public static void getExceptionMethodFromIndex(Exception e, int index){
+    public static void getMethodNameFromIndex(Exception e, int index){
         System.out.println("Exception threw from method: "  + e.getStackTrace()[index]);
     }
 

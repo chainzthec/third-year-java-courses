@@ -3,11 +3,12 @@ package firstCourse;
 import java.util.Arrays;
 
 public class Course {
+
     private void permute() {
         Integer[] a = {10, 20, 30};
         Integer[] b = {40, 50, 60};
         Integer[] temp;
-        //Permutation de deux tableaux
+        //Swap two arrays
         temp = a;
         a = b;
         b = temp;
@@ -17,7 +18,7 @@ public class Course {
     }
 
     private void stringBuilderInitializor() {
-        //Construction complète d'un tableau de 10 SB
+        //Complete construction of an array of 10 SB
         StringBuilder[] sb = new StringBuilder[10];
         for (int i = 0; i < sb.length; i++) {
             sb[i] = new StringBuilder("a");
@@ -27,28 +28,27 @@ public class Course {
         System.out.println("sb = " + sbString);
     }
 
-    private String[] staticAddToArray(String[] array, String value) {
-        String[] result;
-        result = array;
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i]);
+    private void staticAddToArray(String[] array, String value) {
+        String[] result = new String[array.length + 1];
+        for (String elem : array) {
+            System.out.println(elem);
         }
-        result[result.length] = value;
-        return result;
+        result[result.length - 1] = value;
     }
 
-    private void entrainement() {
-        String adresse = "abc@esgi.fr";
-        String resultat = adresse.substring(adresse.indexOf("@") + 1, adresse.lastIndexOf(".")).toUpperCase();
+    private void training() {
+        String address = "abc@esgi.fr";
+        String resultat = address.substring(address.indexOf("@") + 1, address.lastIndexOf(".")).toUpperCase();
         System.out.println(resultat);
     }
 
     public static void main(String[] args) {
-        Course cours = new Course();
-        cours.entrainement();
-        //main.permute();
-        //main.stringBuilderInitializor();
+        Course course = new Course();
+        course.training();
+        course.permute();
+        course.stringBuilderInitializor();
         String[] array = {"Test1", "Test2", "Test3", "Test4"};
-        cours.staticAddToArray(array, "Test5");
+        course.staticAddToArray(array, "Test5");
+        course.staticAddToArray(array, "Test6");
     }
 }

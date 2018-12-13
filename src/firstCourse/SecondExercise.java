@@ -6,16 +6,14 @@ import tools.ExecutionTime;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
 
 public class SecondExercise {
 
-    private void afficherFichier(String nomFichier){
+    private void afficherFichier(String fileName){
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(nomFichier));
+            reader = new BufferedReader(new FileReader(fileName));
             String line = reader.readLine();
             System.out.println("Evaluation score list: \n");
             System.out.println(line);
@@ -27,10 +25,10 @@ public class SecondExercise {
         }
     }
 
-    private void extractMailAndPointFromFile(String nomFichier){
+    private void extractMailAndPointFromFile(String fileName){
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(nomFichier));
+            reader = new BufferedReader(new FileReader(fileName));
             ArrayList<String> scoreList = new ArrayList<>();
             String line;
             while ((line = reader.readLine()) != null)
@@ -38,7 +36,7 @@ public class SecondExercise {
             System.out.println("The average evaluation score is : " + averageStringArrayList(scoreList));
             reader.close();
         } catch (IOException e) {
-            ExceptionHandler.getExceptionMethodFromIndex(e,e.getStackTrace().length- 2);
+            ExceptionHandler.getMethodNameFromIndex(e,e.getStackTrace().length- 2);
         }
     }
 
@@ -50,14 +48,14 @@ public class SecondExercise {
     }
 
     public static void main(String[] args){
-        //Heure actuelle
+        //Time calculation initialization
         ExecutionTime.start();
         SecondExercise exDeux = new SecondExercise();
-
-        exDeux.afficherFichier("misc/test.txt");
-        exDeux.extractMailAndPointFromFile("misc/testdfsd.txt");
-
-        // calcul d'une durée
+        String nomFichier = "misc/test.txt";
+        exDeux.afficherFichier(nomFichier);
+        exDeux.extractMailAndPointFromFile(nomFichier);
+        //Time calculation end and display
+        ExecutionTime.end();
 
 
     }
