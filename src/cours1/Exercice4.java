@@ -31,7 +31,7 @@ public class Exercice4 {
         return result;
     }
 
-    private ArrayList partFourUpdateConditionAIndex(int a, String[] args){
+    private ArrayList partFourUpdateConditionAIndex(int a, String[] args) {
         boolean containsConditionA = false;
         for (String arg : args) {
             if (arg.equals("/a")) {
@@ -42,61 +42,57 @@ public class Exercice4 {
             a++;
         }
         ArrayList arr = new ArrayList();
-        arr.add(a,containsConditionA);
+        arr.add(a, containsConditionA);
         return arr;
 
 
     }
 
-    private void partFour(String[] args, Exercice4 exercice4) {
-        boolean anagramFound = false;
-        if (args.length != 4) {
-            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
+    private boolean partFourVerifyIfAnagramExists(String[] args, int conditionAIndex, boolean anagramFound) {
+        int j = 0;
+        boolean status;
+        for (String elem : args) {
+            if (!elem.equals("/a") && j < conditionAIndex) {
+                char[] elem1Array = StringFormatting.strToLowerCharArray(elem);
+                char[] elem2Array = StringFormatting.strToLowerCharArray(args[conditionAIndex + 1]);
+                Arrays.sort(elem1Array);
+                Arrays.sort(elem2Array);
+                status = Arrays.equals(elem1Array, elem2Array);
+                if (status) {
+                    anagramFound = true;
+                    System.out.println(elem + " est un anagramme de " + args[conditionAIndex + 1]);
+                }
+            }
+            j++;
         }
+        return anagramFound;
+    }
 
-        ArrayList conditionsArrayList = exercice4.partFourUpdateConditionAIndex(-1,args);
-        int conditionAIndex = (int)conditionsArrayList.get(0);
-        boolean containsConditionA = (boolean)conditionsArrayList.get(1);
+    //partie 4 = argument "/a"
+    private void partFour(String[] args, Exercice4 exercice4) {
+        if (args.length != 4)
+            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
+
+        //Vérifie si la condition A est dans la liste des arguments et renvoie son index.
+        ArrayList conditionsArrayList = exercice4.partFourUpdateConditionAIndex(-1, args);
+        int conditionAIndex = (int) conditionsArrayList.get(0);
+        boolean containsConditionA = (boolean) conditionsArrayList.get(1);
+        boolean anagramFound = false;
 
         System.out.println(conditionAIndex);
+
         if (containsConditionA) {
-            int j = 0;
-            boolean status;
-            for (String elem : args) {
-                if (!elem.equals("/a") && j < conditionAIndex) {
-                    char[] elem1Array = StringFormatting.strToLowerCharArray(elem);
-                    char[] elem2Array = StringFormatting.strToLowerCharArray(args[conditionAIndex + 1]);
-                    Arrays.sort(elem1Array);
-                    Arrays.sort(elem2Array);
-                    status = Arrays.equals(elem1Array, elem2Array);
-                    if (status) {
-                        anagramFound = true;
-                        System.out.println(elem + " est un anagramme de " + args[conditionAIndex + 1]);
-                    }
-                }
-                j++;
-            }
+            //Vérifie si un anagramme existe
+            anagramFound = exercice4.partFourVerifyIfAnagramExists(args, conditionAIndex, anagramFound);
         }
         if (!anagramFound)
             System.out.println("Il n'y a aucun anagramme dans les arguments donnés.");
     }
 
-    private String[] partFiveGetElemReplaced(String[] result, String[] args) {
-        for (int i = 0; i < args.length; i++) {
-            if (i != args.length - 1 && i != args.length - 2) {
-                boolean contains;
-                contains = args[i].toLowerCase().contains(args[args.length - 1].toLowerCase());
-                if (contains)
-                    result[i] = args[i].replace(args[args.length - 1], "");
-            }
-        }
-        return result;
-    }
-
+    //partie 5 = argument "/o"
     private void partFive(String[] args, Exercice4 exercice4) {
-        if (args.length != 4) {
+        if (args.length != 4)
             throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
-        }
         if (args[args.length - 2].equals("/o")) {
             String[] result = args;
             //Traitement
@@ -111,12 +107,37 @@ public class Exercice4 {
         }
     }
 
-    private void partSix(String[] args) {
-        if (args.length == 4) {
-
-        } else {
-            throw new IllegalArgumentException("Le nombre d'argument en exécution en ligne de commandes doit être égal à 5 !");
+    //part 5 sub method that returns a string array with corrected elements
+    private String[] partFiveGetElemReplaced(String[] result, String[] args) {
+        for (int i = 0; i < args.length; i++) {
+            if (i != args.length - 1 && i != args.length - 2) {
+                boolean contains;
+                contains = args[i].toLowerCase().contains(args[args.length - 1].toLowerCase());
+                if (contains)
+                    result[i] = args[i].replace(args[args.length - 1], "");
+            }
         }
+        return result;
+    }
+
+    private void partSix(String[] args, Exercice4 exercice4) {
+        if (args.length != 4)
+            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
+        if (args[args.length - 2].equals("/f")) {
+            String stringToCompare = args[args.length - 1];
+            partSixReturnNumberOfOccurences(args,stringToCompare);
+        } else {
+            System.out.println("Aucun élément n'a été supprimé car l'argument \"/o\" n'a pas été trouvé ");
+        }
+    }
+
+    private void partSixReturnNumberOfOccurences(String[] args, String strToCompare){
+        int x = 0;
+        for(int i = 0; i < args.length - 3 ; i++){
+            if(StringFormatting.substringInStr(args[i],strToCompare))
+                x++;
+        }
+        System.out.println("Le nombre d'occurence de la chaîne est :" + x);
     }
 
     public static void main(String[] args) {
@@ -133,10 +154,12 @@ public class Exercice4 {
         System.out.println(exercice4.partThree(3, "defabc"));
         //part 4
         System.out.println("--- PARTIE 4 ---");
-        exercice4.partFour(args,exercice4); // exemple : java cours1.Exercice4. bbac aacp /a acpa renvoie :  aacp est un anagramme de acpa
+        exercice4.partFour(args, exercice4); // exemple : java cours1.Exercice4. bbac aacp /a acpa renvoie :  aacp est un anagramme de acpa
         //part 5
         System.out.println("--- PARTIE 5 ---");
         exercice4.partFive(args, exercice4);
+        System.out.println("--- PARTIE 6 ---");
+        exercice4.partSix(args,exercice4);
 
     }
 }
