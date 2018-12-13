@@ -24,23 +24,28 @@ public class Exercice2 {
         ArrayList<String> scoreList = new ArrayList<>();
         String line;
         while ((line = reader.readLine()) != null)
-            scoreList.add(line.substring(line.indexOf(":") + 1));
-        System.out.println("La moyenne des notes est " + moyenneStringArrayList(scoreList));
+            scoreList.add(line.split(":")[1]);
+        System.out.println("La moyenne des notes est " + averageStringArrayList(scoreList));
+        reader.close();
     }
 
-    private int moyenneStringArrayList(ArrayList<String> arrList) {
+    private int averageStringArrayList(ArrayList<String> arrList) {
         int total = 0;
         for (String elem : arrList)
             total += Integer.parseInt(elem);
         return total / arrList.size();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         //Heure actuelle
         Instant start = Instant.now() ;
         Exercice2 exDeux = new Exercice2();
-        exDeux.afficherFichier("misc/test.txt");
-        exDeux.extractMailAndPointFromFile("misc/test.txt");
+        try {
+            exDeux.afficherFichier("misc/test.txt");
+            exDeux.extractMailAndPointFromFile("misc/test.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // calcul d'une durée
         Duration duration = Duration.between(start, Instant.now()) ;
         System.out.println("Le temps d'exécution était de " + duration);
