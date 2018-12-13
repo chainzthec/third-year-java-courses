@@ -1,5 +1,7 @@
 package firstCourse;
 
+import tools.ExceptionHandler;
+import tools.ExecutionTime;
 import tools.StringFormatting;
 
 import java.util.ArrayList;
@@ -7,16 +9,16 @@ import java.util.Arrays;
 
 public class FourthExercise {
 
-    //vérifie si les deux premiers arguments sont bien corrects
     private void partOne(String[] args) {
-        if (args.length > 1 && !(args[0].matches("\\w+") && args[1].matches("\\w+")))
-            throw new StringIndexOutOfBoundsException("La chaîne de caractère contient des éléments non autorisés");
-        else
-            System.out.println("La chaîne de caractère est valide");
-
+        if (args.length > 1) {
+            if (!(args[0].matches("\\w+") && args[1].matches("\\w+")))
+                throw new StringIndexOutOfBoundsException("String doesn't contain valid characters.");
+            else
+                System.out.println("String is valid");
+        } else
+            System.out.println("No string given");
     }
 
-    //rotation vers la gauche
     private String partTwo(int pos, String str) {
         String leftPart = str.substring(pos);
         String rightPart = str.substring(0, pos);
@@ -24,7 +26,6 @@ public class FourthExercise {
         return result;
     }
 
-    //rotation vers la droite
     private String partThree(int pos, String str) {
         String leftPart = str.substring(0, pos);
         String rightPart = str.substring(pos);
@@ -45,17 +46,17 @@ public class FourthExercise {
         ArrayList arr = new ArrayList();
         arr.add(a, containsConditionA);
         return arr;
-
-
     }
 
     private boolean partFourVerifyIfAnagramExists(String[] args, int conditionAIndex, boolean anagramFound) {
         int j = 0;
         boolean status;
+        char[] elem1Array;
+        char[] elem2Array;
         for (String elem : args) {
             if (!elem.equals("/a") && j < conditionAIndex) {
-                char[] elem1Array = StringFormatting.strToLowerCharArray(elem);
-                char[] elem2Array = StringFormatting.strToLowerCharArray(args[conditionAIndex + 1]);
+                elem1Array = StringFormatting.strToLowerCharArray(elem);
+                elem2Array = StringFormatting.strToLowerCharArray(args[conditionAIndex + 1]);
                 Arrays.sort(elem1Array);
                 Arrays.sort(elem2Array);
                 status = Arrays.equals(elem1Array, elem2Array);
@@ -69,12 +70,12 @@ public class FourthExercise {
         return anagramFound;
     }
 
-    //partie 4 = argument "/a"
     private void partFour(String[] args, FourthExercise fourthExercise) {
-        if (args.length != 4)
-            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
 
-        //Vérifie si la condition A est dans la liste des arguments et renvoie son index.
+        //Verify number of arguments
+        ExceptionHandler.verifyNumberOfArguments(args, 4);
+
+        //Verify if conditionA is in the argument list and returns its index.
         ArrayList conditionsArrayList = fourthExercise.partFourUpdateConditionAIndex(-1, args);
         int conditionAIndex = (int) conditionsArrayList.get(0);
         boolean containsConditionA = (boolean) conditionsArrayList.get(1);
@@ -82,33 +83,32 @@ public class FourthExercise {
 
         System.out.println(conditionAIndex);
 
-        if (containsConditionA) {
-            //Vérifie si un anagramme existe
+        //Verify if an anagram exists
+        if (containsConditionA)
             anagramFound = fourthExercise.partFourVerifyIfAnagramExists(args, conditionAIndex, anagramFound);
-        }
+
         if (!anagramFound)
-            System.out.println("Il n'y a aucun anagramme dans les arguments donnés.");
+            System.out.println("There is no anagram in the given arguments !");
     }
 
-    //partie 5 = argument "/o"
+
     private void partFive(String[] args, FourthExercise fourthExercise) {
-        if (args.length != 4)
-            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
+        ExceptionHandler.verifyNumberOfArguments(args, 4);
+
         if (args[args.length - 2].equals("/o")) {
             String[] result = args;
-            //Traitement
+            //Process
             result = fourthExercise.partFiveGetElemReplaced(result, args);
-            //Affichage
+            //Display
             for (String elem : result) {
                 System.out.print(elem + " ");
             }
             System.out.println();
         } else {
-            System.out.println("Aucun élément n'a été supprimé car l'argument \"/o\" n'a pas été trouvé ");
+            System.out.println("No element was deleted because argument \"/o\" wasn't found.");
         }
     }
 
-    //part 5 sub method that returns a string array with corrected elements
     private String[] partFiveGetElemReplaced(String[] result, String[] args) {
         for (int i = 0; i < args.length; i++) {
             if (i != args.length - 1 && i != args.length - 2) {
@@ -122,13 +122,13 @@ public class FourthExercise {
     }
 
     private void partSix(String[] args, FourthExercise fourthExercise) {
-        if (args.length != 4)
-            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
+        ExceptionHandler.verifyNumberOfArguments(args, 4);
+
         if (args[args.length - 2].equals("/f")) {
             String stringToCompare = args[args.length - 1];
             partSixReturnNumberOfOccurences(args, stringToCompare);
         } else {
-            System.out.println("Aucun élément n'a été supprimé car l'argument \"/f\" n'a pas été trouvé ");
+            System.out.println("No element was deleted because argument \"/f\" was not found.");
         }
     }
 
@@ -138,34 +138,39 @@ public class FourthExercise {
             if (StringFormatting.substringInStr(args[i], strToCompare))
                 x++;
         }
-        System.out.println("Le nombre d'occurence de la chaîne est :" + x);
+        System.out.println("The number of occurrences of the string is :" + x);
     }
 
-    private void partSeven(String [] args, FourthExercise fourthExercise){
-        if(args.length != 4)
-            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
-        if(args[args.length - 2].equals(""));
+    private void partSeven(String[] args, FourthExercise fourthExercise) {
+        if (args.length != 4)
+            throw new IllegalArgumentException("Number of arguments should be equal to 5 !");
+        if (args[args.length - 2].equals("")) ;
     }
 
     public static void main(String[] args) {
+        ExecutionTime.start();
         FourthExercise fourthExercise = new FourthExercise();
         //part 1
-        System.out.println("--- PARTIE 1 ---");
+        System.out.println("--- PART 1 ---");
         fourthExercise.partOne(args);
         //part 2
-        System.out.println("--- PARTIE 2 ---");
+        System.out.println("--- PART 2 ---");
         System.out.println(fourthExercise.partTwo(3, "abcdef"));
         //part 3
-        System.out.println("--- PARTIE 3 ---");
+        System.out.println("--- PART 3 ---");
         System.out.println(fourthExercise.partThree(3, "defabc"));
         //part 4
-        System.out.println("--- PARTIE 4 ---");
-        fourthExercise.partFour(args, fourthExercise); // exemple : java firstCourse.FourthExercise. bbac aacp /a acpa renvoie :  aacp est un anagramme de acpa
+        System.out.println("--- PART 4 ---");
+        fourthExercise.partFour(args, fourthExercise); // exemple : java firstCourse.FourthExercise. bbac aacp /a acpa returns :  aacp is an anagram of acpa
         //part 5
-        System.out.println("--- PARTIE 5 ---");
+        System.out.println("--- PART 5 ---");
         fourthExercise.partFive(args, fourthExercise);
-        System.out.println("--- PARTIE 6 ---");
+        //part 6
+        System.out.println("--- PART 6 ---");
         fourthExercise.partSix(args, fourthExercise);
-
+        //part 7
+        System.out.println("--- PART 7 ---");
+        fourthExercise.partSeven(args, fourthExercise);
+        ExecutionTime.end();
     }
 }

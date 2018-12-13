@@ -1,5 +1,8 @@
 package firstCourse;
 
+import tools.ExceptionHandler;
+import tools.ExecutionTime;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,13 +17,13 @@ public class SecondExercise {
         try {
             reader = new BufferedReader(new FileReader(nomFichier));
             String line = reader.readLine();
-            System.out.println("Liste des notes : \n");
+            System.out.println("Evaluation score list: \n");
             System.out.println(line);
             while ((line = reader.readLine()) != null)
                 System.out.println(line);
             System.out.println();
         } catch (IOException e) {
-            System.out.println("Exception déclenchée dans la méthode : "  + e.getStackTrace()[e.getStackTrace().length - 2]);
+            System.out.println("Exception coming from method: "  + e.getStackTrace()[e.getStackTrace().length - 2]);
         }
     }
 
@@ -32,10 +35,10 @@ public class SecondExercise {
             String line;
             while ((line = reader.readLine()) != null)
                 scoreList.add(line.split(":")[1]);
-            System.out.println("La moyenne des notes est " + averageStringArrayList(scoreList));
+            System.out.println("The average evaluation score is : " + averageStringArrayList(scoreList));
             reader.close();
         } catch (IOException e) {
-            System.out.println("Exception déclenchée dans la méthode : "  + e.getStackTrace()[e.getStackTrace().length - 2]);
+            ExceptionHandler.getExceptionMethodFromIndex(e,e.getStackTrace().length- 2);
         }
     }
 
@@ -48,14 +51,14 @@ public class SecondExercise {
 
     public static void main(String[] args){
         //Heure actuelle
-        Instant start = Instant.now() ;
+        ExecutionTime.start();
         SecondExercise exDeux = new SecondExercise();
 
         exDeux.afficherFichier("misc/test.txt");
         exDeux.extractMailAndPointFromFile("misc/testdfsd.txt");
 
         // calcul d'une durée
-        Duration duration = Duration.between(start, Instant.now()) ;
-        System.out.println("Le temps d'exécution était de " + duration);
+
+
     }
 }

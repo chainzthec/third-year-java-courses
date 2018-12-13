@@ -1,5 +1,7 @@
 package tools;
 
+import java.util.Arrays;
+
 public class StringFormatting {
     public static char[] strToLowerCharArray(String str) {
         return str.toLowerCase().toCharArray();
