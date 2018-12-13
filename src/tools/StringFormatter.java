@@ -2,7 +2,7 @@ package tools;
 
 import java.util.Arrays;
 
-public class StringFormatting {
+public class StringFormatter {
     public static char[] strToLowerCharArray(String str) {
         return str.toLowerCase().toCharArray();
     }

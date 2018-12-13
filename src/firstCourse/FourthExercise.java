@@ -2,8 +2,7 @@ package firstCourse;
 
 import tools.ExceptionHandler;
 import tools.ExecutionTime;
-import tools.StringFormatting;
-
+import tools.StringFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -55,8 +54,8 @@ public class FourthExercise {
         char[] elem2Array;
         for (String elem : args) {
             if (!elem.equals("/a") && j < conditionAIndex) {
-                elem1Array = StringFormatting.strToLowerCharArray(elem);
-                elem2Array = StringFormatting.strToLowerCharArray(args[conditionAIndex + 1]);
+                elem1Array = StringFormatter.strToLowerCharArray(elem);
+                elem2Array = StringFormatter.strToLowerCharArray(args[conditionAIndex + 1]);
                 Arrays.sort(elem1Array);
                 Arrays.sort(elem2Array);
                 status = Arrays.equals(elem1Array, elem2Array);
@@ -135,7 +134,7 @@ public class FourthExercise {
     private void partSixReturnNumberOfOccurrences(String[] args, String strToCompare) {
         int x = 0;
         for (int i = 0; i < args.length - 3; i++) {
-            if (StringFormatting.substringInStr(args[i], strToCompare))
+            if (StringFormatter.substringInStr(args[i], strToCompare))
                 x++;
         }
         System.out.println("The number of occurrences of the string is :" + x);
@@ -144,12 +143,6 @@ public class FourthExercise {
     private void partSeven(String[] args, FourthExercise fourthExercise) {
         ExceptionHandler.verifyNumberOfArguments(args, 4);
 
-        if (args[args.length - 2].equals("/an")) {
-            char[] word = args[args.length - 1].toLowerCase().toCharArray();
-            for (char letter : word) {
-
-            }
-        }
 
     }
 
@@ -182,7 +175,7 @@ public class FourthExercise {
         //fourthExercise.partSix(args, fourthExercise);
         //part 7
         System.out.println("--- PART 7 ---");
-        //fourthExercise.partSeven(args,fourthExercise);
+        fourthExercise.partSeven(args, fourthExercise);
         ExecutionTime.end();
     }
 }
