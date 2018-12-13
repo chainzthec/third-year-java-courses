@@ -1,4 +1,4 @@
-package cours1;
+package firstCourse;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,7 +7,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 
-public class Exercice2 {
+public class SecondExercise {
 
     private void afficherFichier(String nomFichier){
         BufferedReader reader;
@@ -49,7 +49,7 @@ public class Exercice2 {
     public static void main(String[] args){
         //Heure actuelle
         Instant start = Instant.now() ;
-        Exercice2 exDeux = new Exercice2();
+        SecondExercise exDeux = new SecondExercise();
 
         exDeux.afficherFichier("misc/test.txt");
         exDeux.extractMailAndPointFromFile("misc/testdfsd.txt");

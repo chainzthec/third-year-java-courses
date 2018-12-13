@@ -1,13 +1,12 @@
-package cours1;
+package firstCourse;
 
 import java.util.Arrays;
 
-public class Cours {
+public class Course {
     private void permute() {
         Integer[] a = {10, 20, 30};
         Integer[] b = {40, 50, 60};
         Integer[] temp;
-
         //Permutation de deux tableaux
         temp = a;
         a = b;
@@ -29,7 +28,7 @@ public class Cours {
     }
 
     private String[] staticAddToArray(String[] array, String value) {
-        String[] result = new String[array.length + 1];
+        String[] result;
         result = array;
         for (int i = 0; i < result.length; i++) {
             System.out.println(result[i]);
@@ -45,7 +44,7 @@ public class Cours {
     }
 
     public static void main(String[] args) {
-        Cours cours = new Cours();
+        Course cours = new Course();
         cours.entrainement();
         //main.permute();
         //main.stringBuilderInitializor();

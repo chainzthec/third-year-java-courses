@@ -1,4 +1,4 @@
-package cours2;
+package secondCourse;
 
 public class Main {
 }

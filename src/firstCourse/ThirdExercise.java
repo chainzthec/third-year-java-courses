@@ -1,6 +1,6 @@
-package cours1;
+package firstCourse;
 
-public class Exercice3 {
+public class ThirdExercise {
     private boolean exceptionOne(String[] stringArray) {
         for (String elem : stringArray) {
             try {
@@ -30,7 +30,7 @@ public class Exercice3 {
     }
 
     public static void main(String[] args) {
-        Exercice3 exercice3 = new Exercice3();
+        ThirdExercise exercice3 = new ThirdExercise();
 
         String[] arr = {"156465", "16546534", "Bonjour"};
 
