@@ -2,6 +2,7 @@ package cours1;
 
 import tools.StringFormatting;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Exercice4 {
@@ -30,21 +31,33 @@ public class Exercice4 {
         return result;
     }
 
-    private void partFour(String[] args) {
-        boolean anagramFound = false;
-        if (args.length != 4) {
-            throw new IllegalArgumentException("Le nombre d'argument en exécution en ligne de commandes doit être égal à 5 !");
-        }
+    private ArrayList partFourUpdateConditionAIndex(int a, String[] args){
         boolean containsConditionA = false;
-        int conditionAIndex = -1;
         for (String arg : args) {
             if (arg.equals("/a")) {
-                conditionAIndex++;
+                a++;
                 containsConditionA = true;
                 break;
             }
-            conditionAIndex++;
+            a++;
         }
+        ArrayList arr = new ArrayList();
+        arr.add(a,containsConditionA);
+        return arr;
+
+
+    }
+
+    private void partFour(String[] args, Exercice4 exercice4) {
+        boolean anagramFound = false;
+        if (args.length != 4) {
+            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
+        }
+
+        ArrayList conditionsArrayList = exercice4.partFourUpdateConditionAIndex(-1,args);
+        int conditionAIndex = (int)conditionsArrayList.get(0);
+        boolean containsConditionA = (boolean)conditionsArrayList.get(1);
+
         System.out.println(conditionAIndex);
         if (containsConditionA) {
             int j = 0;
@@ -65,7 +78,7 @@ public class Exercice4 {
             }
         }
         if (!anagramFound)
-            System.out.println("Il n'y a aucun anagramme dans les arguments donnés");
+            System.out.println("Il n'y a aucun anagramme dans les arguments donnés.");
     }
 
     private String[] partFiveGetElemReplaced(String[] result, String[] args) {
@@ -82,7 +95,7 @@ public class Exercice4 {
 
     private void partFive(String[] args, Exercice4 exercice4) {
         if (args.length != 4) {
-            throw new IllegalArgumentException("Le nombre d'argument en exécution en ligne de commandes doit être égal à 5 !");
+            throw new IllegalArgumentException("Le nombre d'arguments doit être égal à 5 !");
         }
         if (args[args.length - 2].equals("/o")) {
             String[] result = args;
@@ -120,7 +133,7 @@ public class Exercice4 {
         System.out.println(exercice4.partThree(3, "defabc"));
         //part 4
         System.out.println("--- PARTIE 4 ---");
-        exercice4.partFour(args); // exemple : java cours1.Exercice4. bbac aacp /a acpa renvoie :  aacp est un anagramme de acpa
+        exercice4.partFour(args,exercice4); // exemple : java cours1.Exercice4. bbac aacp /a acpa renvoie :  aacp est un anagramme de acpa
         //part 5
         System.out.println("--- PARTIE 5 ---");
         exercice4.partFive(args, exercice4);
