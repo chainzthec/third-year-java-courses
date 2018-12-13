@@ -147,7 +147,7 @@ public class FourthExercise {
         if (args[args.length - 2].equals("/an")) {
             char[] word = args[args.length - 1].toLowerCase().toCharArray();
             for (char letter : word) {
-                
+
             }
         }
 
