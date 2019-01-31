@@ -30,6 +30,6 @@ public class FifthExercise {
                 "man", "mao", "mug", "mus", "mie", "sur", "dey", "mur"
         };
 
-        displayVoisins(words,);
+        //displayVoisins(words,);
     }
 }
