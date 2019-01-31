@@ -30,6 +30,7 @@ public class Project {
     }
 
     public void displayEmployees(){
+        System.out.print("Employés du projet " + name);
         for(Employee employee : employees){
             System.out.println("\n-----\nFirstname : " + employee.getFirstname() + "\nLastname : " + employee.getLastname() + "\nSalary : " + employee.getSalary() + "\n-----");
         }
