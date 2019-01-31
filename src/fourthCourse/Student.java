@@ -2,7 +2,7 @@ package fourthCourse;
 
 import java.util.Objects;
 
-public class Student {
+public class Student{
 
     private String name;
     private double chiffre;

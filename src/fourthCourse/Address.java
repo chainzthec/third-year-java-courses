@@ -2,9 +2,10 @@ package fourthCourse;
 
 import java.util.Objects;
 
-public class Address {
+public class Address implements Cloneable{
     int num;
     String sheet;
+    private Address address;
 
     public Address(int num,String sheet){
         this.num = num;
@@ -14,5 +15,10 @@ public class Address {
     @Override
     public int hashCode() {
         return Objects.hash(num, sheet);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException{
+        return new Address(num,sheet);
     }
 }
