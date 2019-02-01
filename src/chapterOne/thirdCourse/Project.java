@@ -1,4 +1,4 @@
-package thirdCourse;
+package chapterOne.thirdCourse;
 
 import java.util.ArrayList;
 

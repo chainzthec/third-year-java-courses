@@ -1,4 +1,4 @@
-package fourthCourse;
+package chapterOne.fourthCourse;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package firstCourse;
+package chapterOne.firstCourse;
 
 public class FifthExercise {
 

@@ -1,4 +1,4 @@
-package thirdCourse;
+package chapterOne.thirdCourse;
 
 public class Service {
     private String name;

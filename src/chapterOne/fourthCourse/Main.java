@@ -1,4 +1,4 @@
-package fourthCourse;
+package chapterOne.fourthCourse;
 
 public class Main {
     public static void main(String[] args) {

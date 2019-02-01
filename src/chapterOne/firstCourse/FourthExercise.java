@@ -1,4 +1,4 @@
-package firstCourse;
+package chapterOne.firstCourse;
 
 import tools.ExceptionHandler;
 import tools.ExecutionTime;
@@ -166,7 +166,7 @@ public class FourthExercise {
         System.out.println(fourthExercise.partThree(3, testPartThree2));
         //part 4
         System.out.println("--- PART 4 ---");
-        //fourthExercise.partFour(args, fourthExercise); // exemple : java firstCourse.FourthExercise. bbac aacp /a acpa returns :  aacp is an anagram of acpa
+        //fourthExercise.partFour(args, fourthExercise); // exemple : java chapterOne.firstCourse.FourthExercise. bbac aacp /a acpa returns :  aacp is an anagram of acpa
         //part 5
         System.out.println("--- PART 5 ---");
         //fourthExercise.partFive(args, fourthExercise);
