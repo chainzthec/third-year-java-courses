@@ -13,27 +13,25 @@ public class Course {
         this.students = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
+    public void addStudent(Student student1) {
+        student1.getCourses().add(this);
+        students.add(student1);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void giveMark(Student student1, Result result) {
+        student1.getResults().add(result);
     }
 
-    public String getClassroom() {
-        return classroom;
-    }
-
-    public void setClassroom(String classroom) {
-        this.classroom = classroom;
-    }
-
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nNom de la classe : ").append(name).append("\nSalle de classe : ").append(classroom).append("\nÉlèves participant à cette classe : ");
+        int i = 0;
+        for(Student student : students){
+            sb.append("\nPrénom de l'étudiant ").append(i).append(" : ").append(student.getFirstname());
+            sb.append("\nNom de l'étudiant ").append(i).append(" : ").append(student.getLastname());
+            i++;
+        }
+        return sb.toString();
     }
 }

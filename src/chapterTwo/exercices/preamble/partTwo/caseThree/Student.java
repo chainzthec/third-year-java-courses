@@ -1,36 +1,34 @@
 package chapterTwo.exercices.preamble.partTwo.caseThree;
 
+import java.util.ArrayList;
+
 public class Student {
     private String firstname;
     private String lastname;
-    private Course course;
+    private ArrayList<Course> courses;
+    private ArrayList<Result> results;
 
     public Student(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.courses = new ArrayList<>();
+        this.results = new ArrayList<>();
     }
 
     public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public ArrayList<Course> getCourses() {
+        return courses;
     }
 
-    public Course getCourse() {
-        return course;
+    public ArrayList<Result> getResults() {
+        return results;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
 }

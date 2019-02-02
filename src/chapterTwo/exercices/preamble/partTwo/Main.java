@@ -38,8 +38,18 @@ public class Main {
         //case Three
         System.out.println("\n---CASE THREE----");
         Course course1 = new Course("Maths","B21");
+        Result result1 = new Result(20.00);
+        Result result2 = new Result(19.00);
         Student student1 = new Student("John", "David");
         Student student2 = new Student("Patrice", "Dupont");
-        Result result = new Result(course1,student1,30);
+        course1.addStudent(student1);
+        course1.addStudent(student2);
+        course1.giveMark(student1,result1);
+        course1.giveMark(student2,result2);
+        System.out.println("Prénom de l'étudiant : " + student1.getFirstname());
+        System.out.println("Nom de l'étudiant : " + student1.getLastname());
+        System.out.println("1ère note de l'étudiant 1 en maths : " + student1.getResults().get(0).getMark());
+        System.out.println("1ère note de l'étudiant 2 en maths : " + student2.getResults().get(0).getMark());
+        System.out.println("Informations relatives à la classe 1 : " + course1.toString());
     }
 }
