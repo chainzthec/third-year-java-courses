@@ -14,23 +14,15 @@ public class Employee {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     public String getLastname() {
         return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public Service getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    void setService(Service service) {
         this.service = service;
     }
 }

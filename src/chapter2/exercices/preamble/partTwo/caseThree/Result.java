@@ -12,7 +12,4 @@ public class Result {
         return mark;
     }
 
-    public void setMark(double mark) {
-        this.mark = mark;
-    }
 }

@@ -23,7 +23,7 @@ public class Student {
         return lastname;
     }
 
-    public ArrayList<Course> getCourses() {
+    ArrayList<Course> getCourses() {
         return courses;
     }
 

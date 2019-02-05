@@ -16,23 +16,8 @@ public class Service {
         employee.setService(this);
     }
 
-    public void removeEmployee(int id) {
-        employees.remove(id);
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ArrayList<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(ArrayList<Employee> employees) {
-        this.employees = employees;
-    }
 }
