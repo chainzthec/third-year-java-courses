@@ -61,7 +61,7 @@ public class Test {
     }
 
     private void createBus() {
-        bus = new Bus(175,"La Défense","Gennevilliers RER / Gennevilliers",50,true,28);
+        bus = new Bus(178,"La Défense","Gennevilliers RER / Gennevilliers",50,true,28);
     }
 
 

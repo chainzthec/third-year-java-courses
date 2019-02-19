@@ -15,7 +15,7 @@ public class Bus {
         this.stationStart = stationStart;
         this.stationEnd = stationEnd;
         this.maxCapacity = maxCapacity;
-        this.travellersNumber = 1;
+        this.travellersNumber = 0;
         this.normalOrientation = normalOrientation;
         this.numberOfStops = numberOfStops;
     }
