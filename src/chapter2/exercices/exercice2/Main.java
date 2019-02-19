@@ -26,7 +26,7 @@ public class Main {
         application.showAvgs(application.avgs());
         // b)
         application.testHashSet();
-        // HashSet permet d'éviter
+        // HashSet permet d'éviter les doublons et de vérifier la source de l'objet.
         ExecutionTime.end();
     }
 
