@@ -1,23 +1,27 @@
 package chapter2.exercices.exercice3;
 
+import java.util.ArrayList;
+
 public class Bus {
     private int lineNumber;
     private String stationStart;
     private String stationEnd;
+    private ArrayList<String> stopNames;
     private int maxCapacity;
     private int travellersNumber;
     private boolean normalOrientation;
     private int numberOfStops;
     private int currentStop;
 
-    public Bus(int lineNumber, String stationStart, String stationEnd, int maxCapacity, boolean normalOrientation, int numberOfStops){
+    public Bus(int lineNumber, String stationStart, String stationEnd, int maxCapacity, boolean normalOrientation, ArrayList<String> stopNames){
         this.lineNumber = lineNumber;
         this.stationStart = stationStart;
         this.stationEnd = stationEnd;
         this.maxCapacity = maxCapacity;
         this.travellersNumber = 0;
         this.normalOrientation = normalOrientation;
-        this.numberOfStops = numberOfStops;
+        this.stopNames = stopNames;
+        this.numberOfStops = this.stopNames.size();
     }
 
     public void addTravellers(int number){

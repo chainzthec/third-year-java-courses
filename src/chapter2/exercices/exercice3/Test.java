@@ -29,7 +29,6 @@ public class Test {
                 case 4: removeTraveller();break;
                 case 5: showBusInformations();break;
                 default: sc.close();System.exit(0);break;
-
             }
         }
         while(true);
@@ -43,6 +42,10 @@ public class Test {
     }
 
     private void removeTraveller(){
+        Scanner sc = new Scanner(System.in);
+        int numberOfTravellersToRemove;
+        System.out.println("How much traveller do you want to remove ?");
+        //numberOfTravellersToRemove = thi
         if(bus != null)
             bus.removeTravellers(1);
         else
@@ -61,7 +64,32 @@ public class Test {
     }
 
     private void createBus() {
-        bus = new Bus(178,"La Défense","Gennevilliers RER / Gennevilliers",50,true,28);
+        int choice;
+        Scanner sc = new Scanner(System.in);
+        do
+        {
+            System.out.println("------ BUS CREATION ------");
+            System.out.println("1: Create bus");
+            System.out.println("2: Move the bus");
+            System.out.println("3: Add traveller");
+            System.out.println("4: Remove traveller");
+            System.out.println("5: Show bus informations");
+            System.out.println("5: Quit");
+            System.out.println("---------------------");
+            choice = sc.nextInt();
+
+            switch(choice)
+            {
+                case 1: createBus();break;
+                case 2: moveBus();break;
+                case 3: addTraveller();break;
+                case 4: removeTraveller();break;
+                case 5: showBusInformations();break;
+                default: sc.close();System.exit(0);break;
+            }
+        }
+        while(true);
+        //bus = new Bus(178,"La Défense","Gennevilliers RER / Gennevilliers",50,true,28);
     }
 
 

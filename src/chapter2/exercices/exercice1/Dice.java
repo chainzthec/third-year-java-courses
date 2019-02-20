@@ -1,42 +1,31 @@
 package chapter2.exercices.exercice1;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 class Dice {
-    private static Dice dice;
+    private static Random random = new Random();
+    private int value;
 
-    private Dice(){
+    public void rollTheDice(){
+        this.value = random.nextInt(6) + 1;
     }
 
-    static Dice getDice() {
-        if(dice == null)
-            dice = new Dice();
-        return dice;
+    public int getValue(){
+        return this.value;
     }
 
-    private int getValue(){
-        Random rand = new Random();
-        return rand.nextInt(6) + 1;
-    }
-
-    void twoDicesGame(String nbOfRolls){
-        int rolls = Integer.valueOf(nbOfRolls);
-        int temp = 0;
-        int temp2;
-        for(int i = 0; i < rolls * 2; i++){
-            if(i % 2 == 0){
-                temp = getValue();
-                System.out.println(temp);
-            }else{
-                temp2 = getValue();
-                System.out.println(temp2);
-                if(temp2 == temp){
-                    System.out.println("Gagné !");
-                }else{
-                    System.out.println("Perdu !");
-                }
-                temp = getValue();
-            }
+    public static void startGame(ArrayList<Dice> dices){
+        int[] values = new int[dices.size()];
+        int i = 0;
+        for(Dice dice : dices){
+            dice.rollTheDice();
+            values[i] = dice.getValue();
+            i++;
+        }
+        boolean error = false;
+        for(i = 1; i < values.length; i++){
+            if(values[i])
         }
     }
 }
