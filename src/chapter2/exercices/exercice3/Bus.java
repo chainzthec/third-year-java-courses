@@ -87,11 +87,16 @@ public class Bus {
             sb.append("Starting station : ").append(this.stationEnd).append("\n");
             sb.append("Ending station : ").append(this.stationStart).append("\n");
         }
-        sb.append("Number of the current station : ").append(this.currentStop).append("\n");
+        //sb.append("Number of the current station : ").append(this.currentStop).append("\n");
+        sb.append("Current station name :").append(this.stopNames.get(this.currentStop)).append("\n");
         sb.append("Current number of passengers : ").append(this.travellersNumber).append("\n");
         sb.append("Max capacity : ").append(this.maxCapacity).append("\n");
         sb.append("Number of stops : ").append(this.numberOfStops).append("\n");
         sb.append("------------------");
         return sb.toString();
+    }
+
+    public ArrayList<String> getStopNames() {
+        return stopNames;
     }
 }

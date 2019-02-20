@@ -24,8 +24,16 @@ class Dice {
             i++;
         }
         boolean error = false;
-        for(i = 1; i < values.length; i++){
-            if(values[i])
+        for(i = 0; i < values.length; i++){
+            System.out.println("Value of the dice n°" + (i+1) + " :");
+            System.out.println(values[i]);
+            if(i != 0)
+                if(values[i] != values[i-1])
+                    error = true;
         }
+        if(error)
+            System.out.println("You lost !");
+        else
+            System.out.println("You won !");
     }
 }
