@@ -8,7 +8,7 @@ public class Main {
         //1)
         /*
         try {
-            Class<?> myClass = Class.forName("chapter3.cours.Y");
+            Class<?> myClass = Class.forName("chapter3.chapter4.cours.Y");
             while (myClass != null) {
                 System.out.println(myClass.getName());
                 myClass = myClass.getSuperclass();
