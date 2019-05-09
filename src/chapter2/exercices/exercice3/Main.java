@@ -1,8 +1,0 @@
-package chapter2.exercices.exercice3;
-
-public class Main {
-    public static void main(String[] args) {
-        Test test = new Test();
-        test.launchMenu();
-    }
-}
